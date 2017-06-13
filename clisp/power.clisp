@@ -1,0 +1,44 @@
+#|
+(defun power(x y)
+	(defparameter p x)
+	(loop 
+		(setf x (* x p))
+		(decf y 1)
+		(when (= y 1) (return x))
+	)
+)
+(print (power 2 3))
+|#
+#|
+(defun fn(x y) (expt x y) (+ x y)
+(return-from fn (progn(- x y) (+ x y))))
+
+(print (fn 3 2) )
+|#
+;;;Q9
+#||
+(defun f(l)
+	(defvar a l)
+	(defvar c 0)
+	(loop 
+		(setf a (cdr a))
+		(incf c 1)
+		(when(equal a NIL)
+			(if (< c 5)
+				(return NIL)
+				(return(progn (loop for z from 1 to (- c 3) do (setf l (cdr l))) (car l )))
+			)
+			
+		)
+	)
+)
+||#
+;;;(print (f '(2 3 4 7 6 7 8 9 6)))
+(defun zero-it(x)
+	(if (< x 0)
+		(setf x 0)
+		(setf x x)
+	)
+)
+
+(print (mapcar #'zero-it '(3 -2 4 -6 8)))
