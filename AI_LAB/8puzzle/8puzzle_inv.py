@@ -72,9 +72,9 @@ def puzzle(board,x,y) :
 	#print (invlist)
 	for i in invlist :
 		swap(board,x,y,i[1],i[2])
-		x = puzzle(board,i[1],i[2])
+		flag = puzzle(board,i[1],i[2])
 		swap(board,x,y,i[1],i[2])
-		if(x == True) :
+		if(flag == True) :
 			ppath(board)
 			return True
 
