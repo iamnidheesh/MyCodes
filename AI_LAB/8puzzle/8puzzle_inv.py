@@ -99,8 +99,8 @@ def isSolvable(board) :
 	inv_count = getInvCount(board)
 	return inv_count%2 == 0
 
-board = [input().split() for i in range(3)]
-board = [[int(board[j][i]) for i in range(3)] for j in range(3)]
+board = [[int(j) for j in input().split()] for i in range(3)]
+#board = [[int(board[j][i]) for i in range(3)] for j in range(3)]
 vis = {}
 #print (board)
 if(isSolvable(board)) :
