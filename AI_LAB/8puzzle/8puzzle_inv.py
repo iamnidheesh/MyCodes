@@ -1,4 +1,4 @@
-
+import copy
 
 def hash(board) :
 	c = 1
@@ -42,7 +42,8 @@ def puzzle(board,x,y) :
 	#print("hello")
 	vis[hash(board)] = 1
 	if(issolved(board)) :
-		ppath(board)
+		newboard = copy.deepcopy(board)
+		steps.append(newboard)
 		return True
 
 	invlist = []
@@ -75,7 +76,8 @@ def puzzle(board,x,y) :
 		flag = puzzle(board,i[1],i[2])
 		swap(board,x,y,i[1],i[2])
 		if(flag == True) :
-			ppath(board)
+			newboard = copy.deepcopy(board)
+			steps.append(newboard)
 			return True
 
 	vis[hash(board)] = 0
@@ -99,9 +101,10 @@ def isSolvable(board) :
 	inv_count = getInvCount(board)
 	return inv_count%2 == 0
 
-board = [[int(j) for j in input().split()] for i in range(3)]
-#board = [[int(board[j][i]) for i in range(3)] for j in range(3)]
+board = [input().split() for i in range(3)]
+board = [[int(board[j][i]) for i in range(3)] for j in range(3)]
 vis = {}
+steps = []
 #print (board)
 if(isSolvable(board)) :
 	flag = False
@@ -115,6 +118,10 @@ if(isSolvable(board)) :
 		if(flag) :
 			break
 	puzzle(board,x,y)
+	steps.reverse()
+	for i in steps :
+		ppath(i)
+	print("No of steps : " , len(steps)-1)
 else :
 	print("Not solvable")
 
