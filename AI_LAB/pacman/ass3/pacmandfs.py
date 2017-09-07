@@ -1,4 +1,3 @@
-
 #nodes explored
 #path
 def check(travel):
@@ -58,4 +57,4 @@ for i in explored :
 	print(i[0],i[1])
 print(result)
 for i in path:
-	print(i[0],i[1])
+print(i[0],i[1])
