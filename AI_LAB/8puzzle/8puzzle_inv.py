@@ -105,6 +105,7 @@ board = [input().split() for i in range(3)]
 board = [[int(board[j][i]) for i in range(3)] for j in range(3)]
 vis = {}
 steps = []
+print("this is a 8 puzzle")
 #print (board)
 if(isSolvable(board)) :
 	flag = False
