@@ -13,7 +13,7 @@ void dij(int adj[][1255],int source,int *dis) {
 		int u = (pq.top()).second;
 		pq.pop();
 		for(int i = 1;i <= n;i++) {
-			if(adj[u][i] != 0) {
+			if(i != u) {
 				if(dis[u] + adj[u][i] < dis[i]) {
 					dis[i] = dis[u] + adj[u][i];
 					pq.push(make_pair(dis[i],i));
@@ -54,7 +54,7 @@ int main() {
 		if(z != s && z != e) {
 			
 			ans = min(ans,min(fromRoadS[z]+toRailE[z],fromRailS[z]+toRoadE[z]));
-		}
+		
 	}
 	printf("%d",ans);
 
