@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-int a,b,C,D,ct,n,m;
+int a,b,n,ct,m;
 stack <int> st;
 vector <int> adj[100001],rev[100001];
 int vis[100001];
@@ -15,15 +15,13 @@ void dfs(int v) {
 	st.push(v);
 }
 void revdfs(int v) {
-	vis[v] = 1;
-	ct++;
+	vis[v] = ct;
 	for(int i = 0;i < rev[v].size();i++) {
 		int x = rev[v][i];
 		if(!vis[x]) {
 			revdfs(x);
 		}
 	}
-	//st.push(v);
 }
 int main() {
 	cin>>n>>m;
@@ -35,19 +33,16 @@ int main() {
 	for(int i = 1;i <= n;i++)
 		if(!vis[i])
 			dfs(i);
+	
 	memset(vis,0,sizeof(vis));
-	C = 0,D = 0;
+	ct = 1;
 	while(!st.empty()) {
 		int i = st.top();
 		st.pop();
-		ct = 0;
 		if(!vis[i]) {
 			revdfs(i);
-			if(ct%2 == 0)
-				D += ct;
-			else
-				C += ct;
+			ct++;
 		}
 	}
-	printf("%d",C-D);
+	printf("%d",ct-1);
 }
