@@ -1,5 +1,9 @@
-int dij(vector <pair<int,int> > * v,int s,int * dis) {
-    priority_queue < pair <int,int> , vector < pair <int,int> >,greater < pair <int,int> > > pq;
+#include <bits/stdc++.h>
+using namespace std;
+#define pp pair <int,int>
+
+int dij(vector < pp > * v,int s,int * dis) {
+    priority_queue < pp , vector < pp >,greater < pp > > pq;
     pq.push(make_pair(0,s));
     dis[s] = 0;
     int u;
@@ -7,11 +11,15 @@ int dij(vector <pair<int,int> > * v,int s,int * dis) {
 
         u = (pq.top()).second;
         pq.pop();
-        for( vector <pair <int,int> > :: iterator it = v[u].begin(); it != v[u].end();it++) {
+        for( vector < pp > :: iterator it = v[u].begin(); it != v[u].end();it++) {
             if(dis[u] + it->first < dis[it->second]) {
                 dis[it->second] = dis[u] + it->first;
                 pq.push(make_pair(dis[it->second],it->second));
             }
         }
     }
+}
+
+int main() {
+
 }
