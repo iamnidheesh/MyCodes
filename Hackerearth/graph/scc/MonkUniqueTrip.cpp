@@ -1,3 +1,4 @@
+/*Note : longest path in a DAG formed by assuming scc as nodes*/
 #include <bits/stdc++.h>
 using namespace std;
 int a,b,n,ct,m;
